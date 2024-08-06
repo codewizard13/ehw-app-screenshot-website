@@ -22,14 +22,19 @@ async function screenMenuPages({
 
   // Destructure the options with defaults assigned
   targetUrlObj = (new URL(targetUrl))
-  console.log(`targetUrlObj: `, targetUrlObj)
   domainName = targetUrlObj.hostname.replace("www.","")
+
+  //DEBUG OUT ...
+  console.log(`targetUrlObj: `, targetUrlObj)
   console.log(`domainName: `, domainName)
 
-  screenshotName = `${screenFolder}/${domainName.split('.')[0]}_1080p_${new Date().getTime()}.png`
+  // Define screenshot file path
+  screenPath = `${screenFolder}/${domainName.split('.')[0]}_1080p_${new Date().getTime()}.png`
 
   console.log(viewportSizes["1080p"])
   console.log(targetUrl)
+
+
 
 
   //To test Firefox:
@@ -39,11 +44,23 @@ async function screenMenuPages({
   const context = await browser.newContext()
   const page = await context.newPage()
 
+
+console.log(`wpSelectors.topNav`,wpSelectors.topNav)
+  // Get nav links
+  const [navLinks] = await page.locator(wpSelectors.topNav).allInnerTexts()
+  console.log(`navLinks: `, navLinks)
+
+  // Get page from url
+  // pageName = new URL(targetUrl).pathname.split('/').at(-1).pop()
+  // console.log(`pageName: `, pageName)
+
+
+
   // await page.goto(options["target-url"])
   await page.goto(targetUrl)
   // await page.setViewportSize({width: 640, height: 480})
   await page.setViewportSize(viewportSizes["1080p"])
-  await page.screenshot({ path: screenshotName, fullPage: fullPage })
+  await page.screenshot({ path: screenPath, fullPage: fullPage })
   await browser.close()
 
 }
