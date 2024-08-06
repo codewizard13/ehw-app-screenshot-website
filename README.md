@@ -67,3 +67,4 @@ Notes are located in [./notes/main.md](./notes/main.md)
 - https://chatgpt.com/c/5e133a65-6dc8-4465-85ee-51f77726bc64
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#object_destructuring
 - https://dev.to/michaelburrows/get-the-domain-name-from-a-string-containing-a-url-in-javascript-3c67
+- https://stackoverflow.com/questions/511761/js-function-to-get-filename-from-url
