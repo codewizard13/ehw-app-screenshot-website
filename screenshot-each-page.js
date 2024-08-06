@@ -24,7 +24,7 @@ async function screenshots({
 
   screenshotName = `${screenFolder}/${domainName.split('.')[0]}_1080p_${new Date().getTime()}.png`
 
-  console.log(viewportSizes['1080p'])
+  console.log(viewportSizes["1080p"])
   console.log(targetUrl)
 
 
@@ -44,6 +44,8 @@ async function screenshots({
 
 }
 
-screenshots(options)
+screenshots({
+  'target-url': 'https://hepperlehomestead.com'
+})
 
 
