@@ -180,5 +180,7 @@ yarn-error.log
 #  This file is always evolving. Refer to the link at
 #  https://github.com/codewizard13/ehw-lib
 #  for the latest.
-
-
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
