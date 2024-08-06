@@ -2,7 +2,7 @@ const { chromium, firefox, webkit } = require("playwright")
 
 const options = {
   'target-url': 'https://learnwebcode.com/',
-  'screen-folder': 'junk',
+  'screen-folder': '_apples',
   'viewport-sizes': {
     '1080p': { width: 1920, height: 1080 }
   },
@@ -10,14 +10,15 @@ const options = {
 }
 
 async function screenshots({
-  "tareget-url": targetUrl = "https://reddit.com",
-  screenFolder = 'screens',
+  "target-url": targetUrl = "https://reddit.com",
+  "screen-folder": screenFolder = 'screens',
   fullPage = false
 } = {}) {
 
   // Destructure the options with defaults assigned
   viewportSizes = options["viewport-sizes"]
   console.log(viewportSizes['1080p'])
+  console.log(targetUrl)
 
 
   //To test Firefox:
@@ -27,7 +28,8 @@ async function screenshots({
   const context = await browser.newContext()
   const page = await context.newPage()
 
-  await page.goto(options["target-url"])
+  // await page.goto(options["target-url"])
+  await page.goto(targetUrl)
   // await page.setViewportSize({width: 640, height: 480})
   await page.setViewportSize(viewportSizes["1080p"])
   await page.screenshot({ path: `${screenFolder}/mobile_${new Date().getTime()}.png`, fullPage: fullPage })
