@@ -14,7 +14,7 @@ const options = {
   ]
 }
 
-async function screenshots({
+async function screenMenuPages({
   "target-url": targetUrl = "https://reddit.com",
   "screen-folder": screenFolder = 'screens',
   "full-page": fullPage = false
@@ -48,8 +48,9 @@ async function screenshots({
 
 }
 
-screenshots({
+screenMenuPages({
   'target-url': 'https://hepperlehomestead.com'
 })
+
 
 
