@@ -1,10 +1,9 @@
 const { chromium, firefox, webkit } = require("playwright")
 
+const viewportSizes = {'1080p': { width: 1920, height: 1080 }}
+
 const options = {
   'target-url': 'https://learnwebcode.com/',
-  'viewport-sizes': {
-    '1080p': { width: 1920, height: 1080 }
-  },
   'full-page': true,
   "pagesToScreen": [
     'home', 'blog'
@@ -18,7 +17,6 @@ async function screenshots({
 } = {}) {
 
   // Destructure the options with defaults assigned
-  viewportSizes = options["viewport-sizes"]
   targetUrlObj = (new URL(targetUrl))
   console.log(`targetUrlObj: `, targetUrlObj)
   domainName = targetUrlObj.hostname.replace("www.","")
