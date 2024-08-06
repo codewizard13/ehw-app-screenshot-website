@@ -2,6 +2,10 @@ const { chromium, firefox, webkit } = require("playwright")
 
 const viewportSizes = {'1080p': { width: 1920, height: 1080 }}
 
+const wpSelectors = {
+  'topNav': 'nav li a'
+}
+
 const options = {
   'target-url': 'https://learnwebcode.com/',
   'full-page': true,
