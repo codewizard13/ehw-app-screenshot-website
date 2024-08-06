@@ -9,7 +9,11 @@ const options = {
   'full-page': true
 }
 
-async function screenshots({ targetUrl = "https://reddit.com", screenFolder = 'screens' } = {}) {
+async function screenshots({
+  "tareget-url": targetUrl = "https://reddit.com",
+  screenFolder = 'screens',
+  fullPage = false
+} = {}) {
 
   // Destructure the options with defaults assigned
   viewportSizes = options["viewport-sizes"]
@@ -23,10 +27,10 @@ async function screenshots({ targetUrl = "https://reddit.com", screenFolder = 's
   const context = await browser.newContext()
   const page = await context.newPage()
 
-  await page.goto(targetUrl)
+  await page.goto(options["target-url"])
   // await page.setViewportSize({width: 640, height: 480})
   await page.setViewportSize(viewportSizes["1080p"])
-  await page.screenshot({ path: `mobile_${new Date().getTime()}.png`, fullPage: false })
+  await page.screenshot({ path: `${screenFolder}/mobile_${new Date().getTime()}.png`, fullPage: fullPage })
   await browser.close()
 
 }
