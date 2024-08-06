@@ -1,0 +1,184 @@
+# Project:        MASTER GITIGNORE FILE
+#
+# This Filename:  .gitignore
+# Date Created:   06/08/24
+# Date Updated:   --
+# Programmer:     Eric L. Hepperle
+# 
+# File Version:    1.00.00
+# 
+# File Purpose:
+#  This is the master .gitignore file I created for my own use. You are free
+#  to copy and use this file at your own risk. This version tracks a wordpress
+#  website, but only the site plugin, child theme, and a few specific files.
+#
+# Usage: Rename to .gitignore then use as normal.
+#
+# Resources:
+# - https://chatgpt.com/c/529a0503-3c76-429b-aced-478494130451
+#
+#######################################################
+
+
+
+# WINDOWS #
+#######################################################
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows folder config file: Uncomment if you want custom folder icon changes to be tracked
+# Desktop.ini
+
+
+# MAC OS #
+#######################################################
+.DS_Store
+
+
+# GIT #
+#######################################################
+.git/
+
+
+# Images & Binaries #
+#######################################################
+#*.jpg
+#*.gif
+#*.png
+
+# Windows image file caches
+Thumbs.db
+
+
+# Compiled source #
+#######################################################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+
+# Compressed #
+#######################################################
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+
+# Modules & Packages #
+#######################################################
+node_modules/
+
+
+# Playwright #
+#######################################################
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+
+# Logs and databases #
+#######################################################
+*.log
+*.sql
+*.sqlite
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/log/*.log*
+/tmp/*
+/.vagrant
+/spec/reports
+/coverage
+/*.sublime-*
+/*~
+
+
+# APPLICATIONS #
+#######################################################
+
+# DevOps: Chef, Puppet, Gulp, Grunt, etc
+.gemrc
+chef/
+public/assets/
+
+# Aptana
+/.project
+
+
+
+# Private Files, Credentials, Secrets #
+#######################################################
+private/
+*credential*
+*private*
+
+# Auth Tokens & API Keys
+token.json
+
+# Sandboxes & Junk Files
+sb/
+_sb/
+sandbox/
+playground/
+junk/
+*junk*
+
+# Screenshots
+# screens/
+
+
+# Eric's Custom Files and Folders to Ignore #
+#######################################################
+
+
+
+# Additional common ignores
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE/editor config files
+.idea/
+.vscode/
+*.code-workspace
+
+# Log files
+*.log
+*.tmp
+
+# Node modules and dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Unignore files starting with specific names
+!*.gitignore*
+!*.htacces*
+!license*
+!Version*
+!wp-content/*debug.log*
+
+
+
+### ------------------------------------------------ ####
+#  This file is always evolving. Refer to the link at
+#  https://github.com/codewizard13/ehw-lib
+#  for the latest.
+
+
