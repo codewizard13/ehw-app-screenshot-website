@@ -62,3 +62,5 @@ Notes are located in [./notes/main.md](./notes/main.md)
 ## RESOURCES & REFERENCE
 
 - https://www.youtube.com/watch?v=tLU4GZHZBYk&t=14s&ab_channel=LearnWebCode
+- https://www.simonsmith.io/destructuring-objects-as-function-parameters-in-es6
+- https://mariusschulz.com/blog/typing-destructured-object-parameters-in-typescript
