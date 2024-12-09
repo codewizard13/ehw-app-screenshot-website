@@ -16,7 +16,8 @@ if (args.length === 0) {
 const site_url = args[0]
 console.info(`site_url: ${site_url}`)
 
-const nowDateTime = getDateTime()
+// const today = getDateTime()['EN-12'];
+const nowDateTime = getDateTime();
 console.log(`nowDateTime:`, nowDateTime)
 
 const viewportSizes = {
@@ -107,15 +108,17 @@ function getDateTime(dt_fmt = 'US-12') {
 
   // Date
   let yr2 = cur_dt.getFullYear().toString().substring(2);
+  let yr4 = cur_dt.getFullYear();
   let mo2 = String(cur_dt.getMonth() + 1).padStart(2, 0);
   let dy2 = String(cur_dt.getDate()).padStart(2, 0);
   let date_mmddyy = `${mo2}/${dy2}/${yr2}`;
   let dow_name = Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(cur_dt);
   let mo_long = cur_dt.toLocaleString('default', { month: 'long' });
   let date_full = `${dow_name}, ${mo_long} ${dy2}, ${cur_dt.getFullYear()}`;
+  let sql_date = `${yr4}-${mo2}-${dy2}`
 
   date_obj = {
-    yr2, mo2, dy2, date_mmddyy, dow_name, mo_long, date_full
+    yr2, mo2, dy2, date_mmddyy, dow_name, mo_long, date_full, sql_date
   }
 
   // Time
@@ -128,19 +131,18 @@ function getDateTime(dt_fmt = 'US-12') {
   let mins = cur_dt.getMinutes();
   let fmt_12hr = `${hrs}:${mins} ${AmOrPm}`;
   let fmt_12hr_pad = `${hrs}:${mins} ${AmOrPm}`;
+  let numOnly_24hr = `${hrs}${mins}`
 
   time_obj = {
-    hrs, AmOrPm, mins, fmt_12hr, fmt_12hr_pad
+    hrs, AmOrPm, mins, fmt_12hr, fmt_12hr_pad, numOnly_24hr
   }
 
-  // let date_time_name = `${}`
 
   out_obj.dt = cur_dt;
   out_obj['EN-12'] = {};
   out_obj['EN-12'].date = date_obj;
   out_obj['EN-12'].time = time_obj;
+  out_obj['EN-24-DT-Friendly'] = `${sql_date}_${numOnly_24hr}`
 
   return out_obj;
 }
-// const today = getDateTime()['EN-12'];
-const today = getDateTime();
