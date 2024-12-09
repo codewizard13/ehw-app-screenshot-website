@@ -50,8 +50,11 @@ async function screenMenuPages({
   console.log(`targetUrlObj: `, targetUrlObj)
   console.log(`domainName: `, domainName)
 
+  const dt_pretty = nowDateTime["EN-24-DT-Friendly"]
+  console.log(`dt_pretty: ${dt_pretty}\n`)
+
   // Define screenshot file path
-  screenPath = `${screenFolder}/${domainName.split('.')[0]}_1080p_${new Date().getTime()}.png`
+  screenPath = `${screenFolder}/${domainName.split('.')[0]}_${dt_pretty}_SIZEPLACEHOLDER.png`
 
   console.log(`viewportSizes["desktop-1920x1080"]`, viewportSizes["desktop-1920x1080"])
   console.log(targetUrl)
