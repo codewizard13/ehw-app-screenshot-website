@@ -16,6 +16,8 @@ if (args.length === 0) {
 const site_url = args[0]
 console.info(`site_url: ${site_url}`)
 
+const nowDateTime = getDateTime()
+console.log(`nowDateTime:`, nowDateTime)
 
 const viewportSizes = {
   'desktop-1920x1080': { width: 1920, height: 1080 },
@@ -50,7 +52,7 @@ async function screenMenuPages({
   // Define screenshot file path
   screenPath = `${screenFolder}/${domainName.split('.')[0]}_1080p_${new Date().getTime()}.png`
 
-  console.log(`viewportSizes["desktop-1920x1080"]` , viewportSizes["desktop-1920x1080"])
+  console.log(`viewportSizes["desktop-1920x1080"]`, viewportSizes["desktop-1920x1080"])
   console.log(targetUrl)
 
 
@@ -93,3 +95,51 @@ screenMenuPages({
 
 
 
+/////////////////////// HELPER FUNCTIONS //////////////////////
+
+
+function getDateTime(dt_fmt = 'US-12') {
+
+  var out_obj = {};
+  var date_obj = {};
+  var time_obj = {};
+  var cur_dt = new Date();
+
+  // Date
+  var yr2 = cur_dt.getFullYear().toString().substring(2);
+  var mo2 = String(cur_dt.getMonth() + 1).padStart(2, 0);
+  var dy2 = String(cur_dt.getDate()).padStart(2, 0);
+  var date_mmddyy = `${mo2}/${dy2}/${yr2}`;
+  var dow_name = Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(cur_dt);
+  var mo_long = cur_dt.toLocaleString('default', { month: 'long' });
+  var date_full = `${dow_name}, ${mo_long} ${dy2}, ${cur_dt.getFullYear()}`;
+
+  date_obj = {
+    yr2, mo2, dy2, date_mmddyy, dow_name, mo_long, date_full
+  }
+
+  // Time
+  var hrs = cur_dt.getHours(); // gets 24 hr val
+  var AmOrPm = hrs >= 12 ? 'PM' : 'AM';
+
+  hrs = (hrs % 12) || 12;
+  var hrs_pad = hrs.toString().padStart(2, 0);
+
+  var mins = cur_dt.getMinutes();
+  var fmt_12hr = `${hrs}:${mins} ${AmOrPm}`;
+  var fmt_12hr_pad = `${hrs}:${mins} ${AmOrPm}`;
+
+  time_obj = {
+    hrs, AmOrPm, mins, fmt_12hr, fmt_12hr_pad
+  }
+
+
+  out_obj.dt = cur_dt;
+  out_obj['EN-12'] = {};
+  out_obj['EN-12'].date = date_obj;
+  out_obj['EN-12'].time = time_obj;
+
+  return out_obj;
+}
+// const today = getDateTime()['EN-12'];
+const today = getDateTime();
