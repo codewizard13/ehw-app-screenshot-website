@@ -1,3 +1,8 @@
+const { chromium, firefox, webkit } = require("playwright")
+
+
+// Get command line arguments
+
 const args = process.argv.slice(2);
 
 if (args.length === 0) {
@@ -8,9 +13,13 @@ if (args.length === 0) {
   });
 }
 
-const { chromium, firefox, webkit } = require("playwright")
+const site_url = args[0]
+console.info(`site_url: ${site_url}`)
 
-const viewportSizes = {'1080p': { width: 1920, height: 1080 }}
+
+const viewportSizes = {
+  'desktop-1920x1080': { width: 1920, height: 1080 },
+}
 
 const wpSelectors = {
   'topNav': 'nav li a'
@@ -75,8 +84,10 @@ console.log(`wpSelectors.topNav`,wpSelectors.topNav)
 
 }
 
+// Run screenMenuPages()
 screenMenuPages({
-  'target-url': 'https://hepperlehomestead.com'
+  // 'target-url': 'https://hepperlehomestead.com'
+  'target-url': site_url
 })
 
 
