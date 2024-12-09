@@ -1,3 +1,13 @@
+const args = process.argv.slice(2);
+
+if (args.length === 0) {
+  console.log('No arguments provided.');
+} else {
+  args.forEach(arg => {
+    console.log(`Argument: ${arg}`);
+  });
+}
+
 const { chromium, firefox, webkit } = require("playwright")
 
 const viewportSizes = {'1080p': { width: 1920, height: 1080 }}
