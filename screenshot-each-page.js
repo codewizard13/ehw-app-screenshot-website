@@ -13,12 +13,11 @@ if (args.length === 0) {
   });
 }
 
+// Parse site url from args
 const site_url = args[0]
-console.info(`site_url: ${site_url}`)
 
 // const today = getDateTime()['EN-12'];
 const nowDateTime = getDateTime();
-console.log(`nowDateTime:`, nowDateTime)
 
 const viewportSizes = {
   'desktop-1920x1080': { width: 1920, height: 1080 },
@@ -46,9 +45,6 @@ async function screenMenuPages({
   targetUrlObj = (new URL(targetUrl))
   domainName = targetUrlObj.hostname.replace("www.", "")
 
-  //DEBUG OUT ...
-  console.log(`targetUrlObj: `, targetUrlObj)
-  console.log(`domainName: `, domainName)
 
   const dt_pretty = nowDateTime["EN-24-DT-Friendly"]
   console.log(`dt_pretty: ${dt_pretty}\n`)
@@ -56,16 +52,21 @@ async function screenMenuPages({
   // Define screenshot file path
   screenPath = `${screenFolder}/${domainName.split('.')[0]}_${dt_pretty}_SIZEPLACEHOLDER.png`
 
-  console.log(`viewportSizes["desktop-1920x1080"]`, viewportSizes["desktop-1920x1080"])
-  console.log(targetUrl)
-
-
+  
+  //DEBUG OUT ...
+  console.log(`DEBUGGING VALUES OUT:\n\n*************************\n`)
+  console.log(`targetUrlObj: `, targetUrlObj)
+  console.log(`domainName: `, domainName)
+  console.info(`site_url: ${site_url}`)
+  console.log(`nowDateTime:`, nowDateTime)
+  console.log(`END DEBUGGING *****\n`)
 
 
   //To test Firefox:
-  const browser = await firefox.launch()
+  // const browser = await firefox.launch()
 
-  // const browser = await chromium.launch()
+  // Testing Chrome
+  const browser = await chromium.launch()
   const context = await browser.newContext()
   const page = await context.newPage()
 
