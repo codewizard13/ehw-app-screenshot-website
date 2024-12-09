@@ -100,39 +100,40 @@ screenMenuPages({
 
 function getDateTime(dt_fmt = 'US-12') {
 
-  var out_obj = {};
-  var date_obj = {};
-  var time_obj = {};
-  var cur_dt = new Date();
+  let out_obj = {};
+  let date_obj = {};
+  let time_obj = {};
+  let cur_dt = new Date();
 
   // Date
-  var yr2 = cur_dt.getFullYear().toString().substring(2);
-  var mo2 = String(cur_dt.getMonth() + 1).padStart(2, 0);
-  var dy2 = String(cur_dt.getDate()).padStart(2, 0);
-  var date_mmddyy = `${mo2}/${dy2}/${yr2}`;
-  var dow_name = Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(cur_dt);
-  var mo_long = cur_dt.toLocaleString('default', { month: 'long' });
-  var date_full = `${dow_name}, ${mo_long} ${dy2}, ${cur_dt.getFullYear()}`;
+  let yr2 = cur_dt.getFullYear().toString().substring(2);
+  let mo2 = String(cur_dt.getMonth() + 1).padStart(2, 0);
+  let dy2 = String(cur_dt.getDate()).padStart(2, 0);
+  let date_mmddyy = `${mo2}/${dy2}/${yr2}`;
+  let dow_name = Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(cur_dt);
+  let mo_long = cur_dt.toLocaleString('default', { month: 'long' });
+  let date_full = `${dow_name}, ${mo_long} ${dy2}, ${cur_dt.getFullYear()}`;
 
   date_obj = {
     yr2, mo2, dy2, date_mmddyy, dow_name, mo_long, date_full
   }
 
   // Time
-  var hrs = cur_dt.getHours(); // gets 24 hr val
-  var AmOrPm = hrs >= 12 ? 'PM' : 'AM';
+  let hrs = cur_dt.getHours(); // gets 24 hr val
+  let AmOrPm = hrs >= 12 ? 'PM' : 'AM';
 
   hrs = (hrs % 12) || 12;
-  var hrs_pad = hrs.toString().padStart(2, 0);
+  let hrs_pad = hrs.toString().padStart(2, 0);
 
-  var mins = cur_dt.getMinutes();
-  var fmt_12hr = `${hrs}:${mins} ${AmOrPm}`;
-  var fmt_12hr_pad = `${hrs}:${mins} ${AmOrPm}`;
+  let mins = cur_dt.getMinutes();
+  let fmt_12hr = `${hrs}:${mins} ${AmOrPm}`;
+  let fmt_12hr_pad = `${hrs}:${mins} ${AmOrPm}`;
 
   time_obj = {
     hrs, AmOrPm, mins, fmt_12hr, fmt_12hr_pad
   }
 
+  // let date_time_name = `${}`
 
   out_obj.dt = cur_dt;
   out_obj['EN-12'] = {};
